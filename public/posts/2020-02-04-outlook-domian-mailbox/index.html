@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="zh-cn"
+  dir="ltr">
+
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+
+
+
+<link rel="icon" type="image/ico" href="http://localhost:1313//favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313//favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313//favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="192x192" href="http://localhost:1313//android-chrome-192x192.png">
+<link rel="apple-touch-icon" sizes="180x180" href="http://localhost:1313//apple-touch-icon.png">
+
+<meta name="description" content=""/>
+
+
+
+<title>
+    
+    使用Outlook搭建域名邮箱 | 穷.me
+    
+</title>
+
+<link rel="canonical" href="http://localhost:1313/posts/2020-02-04-outlook-domian-mailbox/"/>
+
+<meta property="og:url" content="http://localhost:1313/posts/2020-02-04-outlook-domian-mailbox/">
+  <meta property="og:site_name" content="穷.me">
+  <meta property="og:title" content="使用Outlook搭建域名邮箱">
+  <meta property="og:description" content="有些时候，不发飙真就不能办成事。如君所见，在CrazyDomains上注册的域名，经过我几次三番地沟通之后，终于在我暴怒的情绪下可以正常使用了。而这期间，整整花费了大约72小时。牢骚就不多说了，下面开始教大家如何用Outlook免费搭建我们的域名邮箱。
+每每在拿到一个新域名时，配置相应的邮件服务器是必不可少的一个步骤。现在的网络上很多免费的邮件系统可以使用，比如：Zoho Mail、Migadu、Yandex、腾讯企业邮箱等等，但是这类邮箱对我而言是比较麻烦的，因为又得开通一个新邮箱，并且还要时时关注它是否有新邮件。相对来说，QQ的域名邮箱就很不错，和我常用的邮箱合在一起，方便收发、方便阅读。但是，QQ域名邮箱支持的域名后缀实在太少，新域名和国别域名几乎都不认。
+那么还有其他什么方法吗？答案是——必须有。
+启用邮件转发服务 # 根据@小众软件{:target=&#34;_blank&#34;}的介绍，我们可以使用ImprovMX{:target=&#34;_blank&#34;}和ForwardEmail{:target=&#34;_blank&#34;}这两家免费的邮箱转发服务。当然，现在国外也有不少域名注册商也提供这样的邮件转发服务。这里，我们以ImprovMX服务为例。
+打开域名的DNS，添加如下的MX记录，以便于启用ImprovMX邮件转向服务:
+Host Value Priority @ mx1.improvmx.com 10 @ mx2.improvmx.com 20 然后在ImprovMX添加想要配置的域名以及你个人的Outlook邮箱，然后进行验证。
+这样，我们的域名邮箱就可以实现收邮件了。
+但是，想要用我们的域名邮箱发邮件，又该怎么办呢？请往下看。
+配置Outlook # 登录Outlook → 点击右上角的设置 → 点击右下角的查看全部Outlook设置 → 点击中间栏的同步电子邮件 → 向下翻，点击管理或选择主别名 → 在弹出的新页面输入Outlook的账号、密码并登录 → 点击添加电子邮件{:target=&#34;_blank&#34;} → 勾选将现有电子邮件地址添加为 Microsoft 帐户别名并输入刚刚在ImprovMX设置好的域名邮箱 → 点击添加别名。
+这样，Outlook的第一步配置工作就完成了。我们会在账户别名里看到刚刚添加的域名邮箱，但是后面还有一个验证的链接，不要犹豫点击它，Outlook会自动给域名邮箱发送一封验证邮件的链接。
+由于之前我们已经让ImprovMX把所有域名的邮件都转发到Outlook邮箱，所以打开我们的Outlook收件箱，就会看到这封验证邮件。点击验证的超链接，我们的域名邮箱就会被Outlook认证。至此，我们的域名邮箱就可以发邮件了。
+这里要说明的是，如果不是将域名邮箱设置为主要，那么默认还是会用Outlook账号发送，这就需要我们在写邮件的时候手动点击一下发件人，就可以我们的域名邮箱发件了。">
+  <meta property="og:locale" content="zh_cn">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2020-02-04T08:00:00+08:00">
+    <meta property="article:modified_time" content="2020-02-04T08:00:00+08:00">
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/assets/combined.min.4d83d9d131fa58e4a3582b029a9d295c34033e4132d049b0e16fa8d1e9ddfebf.css" media="all">
+
+
+
+
+
+</head>
+
+
+
+
+
+
+
+<body class="auto">
+
+  <div class="content">
+    <header>
+      
+
+<div class="header">
+
+    
+
+    <h1 class="header-title">
+        <a href="http://localhost:1313/">穷.me</a>
+    </h1>
+
+    <div class="flex">
+        
+
+        
+        
+      
+        <p class="small ">
+            <a href="/" >
+                /🏠首页
+            </a>
+        </p>
+        
+      
+        <p class="small ">
+            <a href="/posts" >
+                /📑文章
+            </a>
+        </p>
+        
+      
+        <p class="small ">
+            <a href="/about" >
+                /😀关于
+            </a>
+        </p>
+        
+      
+        <p class="small ">
+            <a href="/friend" >
+                /朋友
+            </a>
+        </p>
+        
+        
+    </div>
+
+    
+
+</div>
+
+    </header>
+
+    <main class="main">
+      
+
+
+
+
+
+<div class="breadcrumbs">
+    
+    <a href="/">Home</a>
+    <span class="breadcrumbs-separator"> / </span>
+    
+    <a href="/posts/">Posts</a>
+    <span class="breadcrumbs-separator"> / </span>
+    
+    <a href="/posts/2020-02-04-outlook-domian-mailbox/">使用Outlook搭建域名邮箱</a>
+</div>
+
+
+
+<div >
+
+  <div class="single-intro-container">
+
+    
+
+    <h1 class="single-title">使用Outlook搭建域名邮箱</h1>
+    
+
+    
+
+    <p class="single-readtime">
+      
+      
+      
+      <time datetime="2020-02-04T08:00:00&#43;08:00">2020-02-04</time>
+      
+
+      
+    </p>
+
+  </div>
+
+  
+
+  
+
+  
+
+  
+
+  <div class="single-content">
+    <p>有些时候，不发飙真就不能办成事。如君所见，在CrazyDomains上注册的域名，经过我几次三番地沟通之后，终于在我暴怒的情绪下可以正常使用了。而这期间，整整花费了大约72小时。牢骚就不多说了，下面开始教大家如何用Outlook免费搭建我们的域名邮箱。</p>
+<p>每每在拿到一个新域名时，配置相应的邮件服务器是必不可少的一个步骤。现在的网络上很多免费的邮件系统可以使用，比如：Zoho Mail、Migadu、Yandex、腾讯企业邮箱等等，但是这类邮箱对我而言是比较麻烦的，因为又得开通一个新邮箱，并且还要时时关注它是否有新邮件。相对来说，QQ的域名邮箱就很不错，和我常用的邮箱合在一起，方便收发、方便阅读。但是，QQ域名邮箱支持的域名后缀实在太少，新域名和国别域名几乎都不认。</p>
+<p>那么还有其他什么方法吗？答案是——必须有。</p>
+<h3 class="heading" id="启用邮件转发服务">
+  启用邮件转发服务
+  <a class="anchor" href="#%e5%90%af%e7%94%a8%e9%82%ae%e4%bb%b6%e8%bd%ac%e5%8f%91%e6%9c%8d%e5%8a%a1">#</a>
+</h3>
+<p>根据<a href="https://www.appinn.com/improv-mx/">@小众软件</a>{:target=&quot;_blank&quot;}的介绍，我们可以使用<a href="https://improvmx.com/">ImprovMX</a>{:target=&quot;_blank&quot;}和<a href="https://forwardemail.net/zh">ForwardEmail</a>{:target=&quot;_blank&quot;}这两家免费的邮箱转发服务。当然，现在国外也有不少域名注册商也提供这样的邮件转发服务。这里，我们以ImprovMX服务为例。</p>
+<p>打开域名的DNS，添加如下的MX记录，以便于启用ImprovMX邮件转向服务:</p>
+<table>
+  <thead>
+      <tr>
+          <th>Host</th>
+          <th>Value</th>
+          <th>Priority</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>@</td>
+          <td>mx1.improvmx.com</td>
+          <td>10</td>
+      </tr>
+      <tr>
+          <td>@</td>
+          <td>mx2.improvmx.com</td>
+          <td>20</td>
+      </tr>
+  </tbody>
+</table>
+<p>然后在ImprovMX添加想要配置的域名以及你个人的Outlook邮箱，然后进行验证。</p>
+<p>这样，我们的域名邮箱就可以实现收邮件了。</p>
+<p>但是，想要用我们的域名邮箱发邮件，又该怎么办呢？请往下看。</p>
+<h3 class="heading" id="配置outlook">
+  配置Outlook
+  <a class="anchor" href="#%e9%85%8d%e7%bd%aeoutlook">#</a>
+</h3>
+<p>登录Outlook → 点击右上角的<code>设置</code> → 点击右下角的<code>查看全部Outlook设置</code> → 点击中间栏的<code>同步电子邮件</code> → 向下翻，点击<code>管理或选择主别名</code> → 在弹出的新页面输入Outlook的账号、密码并登录 → 点击<a href="https://account.live.com/AddAssocId?uaid=561d21f919814d29826c6435d2bcefed"><code>添加电子邮件</code></a>{:target=&quot;_blank&quot;} → 勾选<code>将现有电子邮件地址添加为 Microsoft 帐户别名</code>并输入刚刚在ImprovMX设置好的域名邮箱 → 点击<code>添加别名</code>。</p>
+<p>这样，Outlook的第一步配置工作就完成了。我们会在<code>账户别名</code>里看到刚刚添加的域名邮箱，但是后面还有一个<code>验证</code>的链接，不要犹豫点击它，Outlook会自动给域名邮箱发送一封验证邮件的链接。</p>
+<p>由于之前我们已经让ImprovMX把所有域名的邮件都转发到Outlook邮箱，所以打开我们的Outlook收件箱，就会看到这封验证邮件。点击验证的超链接，我们的域名邮箱就会被Outlook认证。至此，我们的域名邮箱就可以发邮件了。</p>
+<p>这里要说明的是，如果不是将域名邮箱<code>设置为主要</code>，那么默认还是会用Outlook账号发送，这就需要我们在写邮件的时候手动点击一下<code>发件人</code>，就可以我们的域名邮箱发件了。</p>
+
+    
+  </div>
+
+  
+
+  
+
+  
+  
+
+<div class="single-pagination">
+    <hr />
+
+    <div class="flex">
+
+        <div class="single-pagination-prev">
+            
+            <div class="single-pagination-container-prev">
+                <div class="single-pagination-text">←</div>
+                <div class="single-pagination-text">
+                    <a href="/posts/2020-02-02-qing-re/">
+                        被迫更名为「清热」并更换网址
+                    </a>
+                </div>
+            </div>
+            
+        </div>
+
+        <div class="single-pagination-next">
+            
+            <div class="single-pagination-container-next">
+                <div class="single-pagination-text">
+                    <a href="/posts/2020-02-09-target-blank/">
+                        如何让Markdown在新窗口打开超链接
+                    </a>
+                </div>
+                <div class="single-pagination-text">→</div>
+            </div>
+            
+        </div>
+
+    </div>
+
+    <hr />
+</div>
+
+
+
+  
+
+  
+
+  
+  <div class="back-to-top">
+    <a href="#top">
+      back to top
+    </a>
+  </div>
+  
+
+</div>
+
+
+    </main>
+  </div>
+
+  <footer>
+    
+
+    
+    
+    
+    <p>Custom</p>
+    
+
+
+  </footer>
+
+  
+
+</body>
+
+<script src="/js/theme-switch.js"></script>
+<script defer src="/js/copy-code.js"></script>
+</html>

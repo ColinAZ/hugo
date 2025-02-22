@@ -1,0 +1,93 @@
+baseURL = "https://qiong.me/"
+languageCode = "zh-cn"
+title = "穷.me"
+theme = "Typo"
+
+
+[taxonomies]
+tag = 'tags'
+
+[params]
+# Home meta description
+description = "A tech-oriented personal blog curated by Francesco Tomaselli."
+
+# Appearance settings
+theme = 'auto'
+colorPalette = 'default'
+hideHeader = false
+
+# Intro on main page, content in markdown
+homeIntroTitle = '碎碎念💬'
+homeIntroContent = """
+新闻专业真正的魔幻在于：它教会你解构世界的虚伪，又逼你成为虚伪的一部分。但或许正是这种撕裂感，让新闻人都成了“戴着镣铐跳舞的清醒者”——在算法监狱里写密码诗，用流量鸦片熬真理的汤。
+"""
+
+
+singleDateFormat = '2006-01-02'
+
+# Collection to display on home
+homeCollectionTitle = '随笔集📝'
+homeCollection = 'posts'
+
+# Lists parameters
+paginationSize = 10
+listSummaries = false
+listDateFormat = '2006-01-02'
+
+# Breadcrumbs
+breadcrumbs = true
+
+showFooter = true
+footerContent = """Custom"""
+
+# Social icons
+[[params.social]]
+name = "twitter"
+url = "https://www.x.com/22222/"
+
+[[params.social]]
+name = "telegram"
+url = "https://t.me/fm789"
+
+[[params.social]]
+name = "github"
+url = "https://github.com/ColinAZ"
+
+# Main menu pages
+[[params.menu]]
+name = "🏠首页"
+url = "/"
+
+[[params.menu]]
+name = "📑文章"
+url = "/posts"
+
+[[params.menu]]
+name = "😀关于"
+url = "/about"
+
+[[params.menu]]
+name = "朋友"
+url = "/friend"
+
+# [[params.menu]]
+# name = "tags"
+# url = "/tags"
+
+
+# Syntax highlight on code blocks
+[markup]
+[markup.highlight]
+style = 'bw'
+
+# Deploy settings
+
+[[deployment.matchers]]
+pattern = "^.+\\.(js|css|svg|ttf|woff2)$"
+cacheControl = "max-age=31536000, no-transform, public"
+gzip = true
+
+[[deployment.matchers]]
+pattern = "^.+\\.(png|jpg|gif|webp)$"
+cacheControl = "max-age=31536000, no-transform, public"
+gzip = false

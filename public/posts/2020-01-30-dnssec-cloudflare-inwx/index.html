@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="zh-cn"
+  dir="ltr">
+
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+
+
+
+<link rel="icon" type="image/ico" href="http://localhost:1313//favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313//favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313//favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="192x192" href="http://localhost:1313//android-chrome-192x192.png">
+<link rel="apple-touch-icon" sizes="180x180" href="http://localhost:1313//apple-touch-icon.png">
+
+<meta name="description" content=""/>
+
+
+
+<title>
+    
+    INWX域名如何设置CloudFlare的DNSSEC | 穷.me
+    
+</title>
+
+<link rel="canonical" href="http://localhost:1313/posts/2020-01-30-dnssec-cloudflare-inwx/"/>
+
+<meta property="og:url" content="http://localhost:1313/posts/2020-01-30-dnssec-cloudflare-inwx/">
+  <meta property="og:site_name" content="穷.me">
+  <meta property="og:title" content="INWX域名如何设置CloudFlare的DNSSEC">
+  <meta property="og:description" content="我这个域名是在INWX{:target=&#34;_blank&#34;}注册的，因为价格便宜。注册后发现，INWX的域名管理系统相当完善，不仅有强大的DNS管理系统、免费的SSL、Glue Records、Master/Slave DNS等，同样也支持DNSSEC。但是，当我尝试用CloudFlare提供的DNSSEC参数的时候，却发现INWX必须手动配置DNSSEC才行。
+因此，编写了这个简短的教程，希望能够帮助更多的人。
+用Cloudflare准备DNSSEC # 首先第一步是要开启CloudFlare的DNSSEC，它就在DNS选项卡下面一点点的位置。找到DNSSEC之后，单击Enable DNSSEC开启DNSSEC。这时你将会看到有关DNSSEC配置的许多参数，Cloudflare要求我们将这些信息添加到域名注册平台中去。由于域名是在INWX注册的，所以接下来去INWX登录吧。
+在INWX站点上设置DNSSEC # 登录INWX后，在侧栏中搜索DNSSEC选项卡，然后在打开的页面上单击Add DNSSEC（页面右上角很小的一个按钮），这时会弹出一个窗口。在该弹出窗口中，首先填入你要添加DNSSEC的域名，然后取消选中automatic modus的复选框，这时将弹出两个附加字段。不要被名称迷惑了（CloudFlare和INWX的DS Record不是一回事），我们只需要填写第一个字段就可以了。
+不过，在INWX家的DNSKEY RR记录，并不能直接复制和粘贴使用Cloudflare管理面板中的参数。我们必须要自己手动建立（这里是唯一的难点）。好在官方提供和的DNSSEC规范很有帮助。
+如何从Cloudflare的参数中构建DNSKEY RR记录 # Cloudflare在DNSSEC面板中提供了很多值，但没有提供易于复制的DNSKEY RR记录。好在自行构建非常容易。打开文本编辑器稍加改造就可以使用了。
+首先，从Cloudflare复制DS Record值。 将IN DS替换为IN DNSKEY。 用Flags值（即257）替换指定为Key Tag的字符串后的数字（即2345）。 用3 13替换最后两个数字，例如13 2，因为3是DNSKEY记录中的固定值，而13是Cloudflare使用的官方算法。 用公共密钥字段的值替换最后一个长字符串。 现在通过改造，我们会得到一个类似于以下内容的记录：
+yourdomain.com. 3600 IN DNSKEY 257 3 13 oJB1W6WNGv&#43;ldv[...]eDQfsS3Ap3o= 然后把上面这些文本粘贴到INWX的DNSKEY RR字段中，因此它看起来像这样：
+单击SAVE按钮，就算大功告成了。不过这时候，Cloudflare还无法正确识别已配置的域名，这需要一点时间。我们可以沏一杯茶，边看新型冠状病毒的新闻，边等它生效了。">
+  <meta property="og:locale" content="zh_cn">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2020-01-30T08:00:00+08:00">
+    <meta property="article:modified_time" content="2020-01-30T08:00:00+08:00">
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/assets/combined.min.4d83d9d131fa58e4a3582b029a9d295c34033e4132d049b0e16fa8d1e9ddfebf.css" media="all">
+
+
+
+
+
+</head>
+
+
+
+
+
+
+
+<body class="auto">
+
+  <div class="content">
+    <header>
+      
+
+<div class="header">
+
+    
+
+    <h1 class="header-title">
+        <a href="http://localhost:1313/">穷.me</a>
+    </h1>
+
+    <div class="flex">
+        
+
+        
+        
+      
+        <p class="small ">
+            <a href="/" >
+                /🏠首页
+            </a>
+        </p>
+        
+      
+        <p class="small ">
+            <a href="/posts" >
+                /📑文章
+            </a>
+        </p>
+        
+      
+        <p class="small ">
+            <a href="/about" >
+                /😀关于
+            </a>
+        </p>
+        
+      
+        <p class="small ">
+            <a href="/friend" >
+                /朋友
+            </a>
+        </p>
+        
+        
+    </div>
+
+    
+
+</div>
+
+    </header>
+
+    <main class="main">
+      
+
+
+
+
+
+<div class="breadcrumbs">
+    
+    <a href="/">Home</a>
+    <span class="breadcrumbs-separator"> / </span>
+    
+    <a href="/posts/">Posts</a>
+    <span class="breadcrumbs-separator"> / </span>
+    
+    <a href="/posts/2020-01-30-dnssec-cloudflare-inwx/">INWX域名如何设置CloudFlare的DNSSEC</a>
+</div>
+
+
+
+<div >
+
+  <div class="single-intro-container">
+
+    
+
+    <h1 class="single-title">INWX域名如何设置CloudFlare的DNSSEC</h1>
+    
+
+    
+
+    <p class="single-readtime">
+      
+      
+      
+      <time datetime="2020-01-30T08:00:00&#43;08:00">2020-01-30</time>
+      
+
+      
+    </p>
+
+  </div>
+
+  
+
+  
+
+  
+
+  
+
+  <div class="single-content">
+    <p>我这个域名是在<a href="https://www.inwx.com/en" title="INWX">INWX</a>{:target=&quot;_blank&quot;}注册的，因为价格便宜。注册后发现，INWX的域名管理系统相当完善，不仅有强大的DNS管理系统、<del>免费的</del>SSL、Glue Records、Master/Slave DNS等，同样也支持DNSSEC。但是，当我尝试用CloudFlare提供的DNSSEC参数的时候，却发现INWX必须手动配置DNSSEC才行。</p>
+<p>因此，编写了这个简短的教程，希望能够帮助更多的人。</p>
+<h3 class="heading" id="用cloudflare准备dnssec">
+  用Cloudflare准备DNSSEC
+  <a class="anchor" href="#%e7%94%a8cloudflare%e5%87%86%e5%a4%87dnssec">#</a>
+</h3>
+<p>首先第一步是要开启CloudFlare的DNSSEC，它就在DNS选项卡下面一点点的位置。找到DNSSEC之后，单击<code>Enable DNSSEC</code>开启DNSSEC。这时你将会看到有关DNSSEC配置的许多参数，Cloudflare要求我们将这些信息添加到域名注册平台中去。由于域名是在INWX注册的，所以接下来去INWX登录吧。</p>
+<h3 class="heading" id="在inwx站点上设置dnssec">
+  在INWX站点上设置DNSSEC
+  <a class="anchor" href="#%e5%9c%a8inwx%e7%ab%99%e7%82%b9%e4%b8%8a%e8%ae%be%e7%bd%aednssec">#</a>
+</h3>
+<p>登录INWX后，在侧栏中搜索DNSSEC选项卡，然后在打开的页面上单击<code>Add DNSSEC</code>（页面右上角很小的一个按钮），这时会弹出一个窗口。在该弹出窗口中，首先填入你要添加DNSSEC的域名，然后取消选中<code>automatic modus</code>的复选框，这时将弹出两个附加字段。不要被名称迷惑了（CloudFlare和INWX的DS Record不是一回事），我们只需要填写第一个字段就可以了。</p>
+<p>不过，在INWX家的DNSKEY RR记录，并不能直接复制和粘贴使用Cloudflare管理面板中的参数。我们必须要自己手动建立（这里是唯一的难点）。好在官方提供和的DNSSEC规范很有帮助。</p>
+<h3 class="heading" id="如何从cloudflare的参数中构建dnskey-rr记录">
+  如何从Cloudflare的参数中构建DNSKEY RR记录
+  <a class="anchor" href="#%e5%a6%82%e4%bd%95%e4%bb%8ecloudflare%e7%9a%84%e5%8f%82%e6%95%b0%e4%b8%ad%e6%9e%84%e5%bb%badnskey-rr%e8%ae%b0%e5%bd%95">#</a>
+</h3>
+<p>Cloudflare在DNSSEC面板中提供了很多值，但没有提供易于复制的DNSKEY RR记录。好在自行构建非常容易。打开文本编辑器稍加改造就可以使用了。</p>
+<ol>
+<li>首先，从Cloudflare复制DS Record值。</li>
+<li>将<code>IN DS</code>替换为<code>IN DNSKEY</code>。</li>
+<li>用<code>Flags</code>值（即257）替换指定为<code>Key Tag</code>的字符串后的数字（即2345）。</li>
+<li>用<code>3 13</code>替换最后两个数字，例如<code>13 2</code>，因为<code>3</code>是DNSKEY记录中的固定值，而<code>13</code>是Cloudflare使用的官方算法。</li>
+<li>用公共密钥字段的值替换最后一个长字符串。</li>
+</ol>
+<p>现在通过改造，我们会得到一个类似于以下内容的记录：</p>
+<pre><code>yourdomain.com. 3600 IN DNSKEY 257 3 13 oJB1W6WNGv+ldv[...]eDQfsS3Ap3o=
+</code></pre>
+<p>然后把上面这些文本粘贴到INWX的DNSKEY RR字段中，因此它看起来像这样：</p>
+<p>
+
+
+
+
+
+
+
+
+
+
+
+<figure class="">
+
+    <div>
+        <img loading="lazy" alt="" src="https://db3.obs.cn-east-4.myhuaweicloud.com/album/20200130-1.jpg" >
+    </div>
+
+    
+</figure>
+</p>
+<p>单击<code>SAVE</code>按钮，就算大功告成了。不过这时候，Cloudflare还无法正确识别已配置的域名，这需要一点时间。我们可以沏一杯茶，边看新型冠状病毒的新闻，边等它生效了。</p>
+
+    
+  </div>
+
+  
+
+  
+
+  
+  
+
+<div class="single-pagination">
+    <hr />
+
+    <div class="flex">
+
+        <div class="single-pagination-prev">
+            
+            <div class="single-pagination-container-prev">
+                <div class="single-pagination-text">←</div>
+                <div class="single-pagination-text">
+                    <a href="/posts/2020-01-29-dogedoge/">
+                        多吉搜索（DogeDoge）：一个干净、纯粹的搜索引擎
+                    </a>
+                </div>
+            </div>
+            
+        </div>
+
+        <div class="single-pagination-next">
+            
+            <div class="single-pagination-container-next">
+                <div class="single-pagination-text">
+                    <a href="/posts/2020-02-02-qing-re/">
+                        被迫更名为「清热」并更换网址
+                    </a>
+                </div>
+                <div class="single-pagination-text">→</div>
+            </div>
+            
+        </div>
+
+    </div>
+
+    <hr />
+</div>
+
+
+
+  
+
+  
+
+  
+  <div class="back-to-top">
+    <a href="#top">
+      back to top
+    </a>
+  </div>
+  
+
+</div>
+
+
+    </main>
+  </div>
+
+  <footer>
+    
+
+    
+    
+    
+    <p>Custom</p>
+    
+
+
+  </footer>
+
+  
+
+</body>
+
+<script src="/js/theme-switch.js"></script>
+<script defer src="/js/copy-code.js"></script>
+</html>

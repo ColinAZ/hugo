@@ -1,0 +1,5 @@
+baseURL = "https://qiong.me/"
+languageCode = "zh-cn"
+title = "穷.me"
+
+theme = "Typo"

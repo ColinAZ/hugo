@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="zh-cn"
+  dir="ltr">
+
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+
+
+
+<link rel="icon" type="image/ico" href="http://localhost:1313//favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313//favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313//favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="192x192" href="http://localhost:1313//android-chrome-192x192.png">
+<link rel="apple-touch-icon" sizes="180x180" href="http://localhost:1313//apple-touch-icon.png">
+
+<meta name="description" content=""/>
+
+
+
+<title>
+    
+    如何让Markdown在新窗口打开超链接 | 穷.me
+    
+</title>
+
+<link rel="canonical" href="http://localhost:1313/posts/2020-02-09-target-blank/"/>
+
+<meta property="og:url" content="http://localhost:1313/posts/2020-02-09-target-blank/">
+  <meta property="og:site_name" content="穷.me">
+  <meta property="og:title" content="如何让Markdown在新窗口打开超链接">
+  <meta property="og:description" content="markdown链接语法[title](url)，编译为html，形如&lt;a href=&#34;url&#34;&gt;&lt;/a&gt;。但很多时候，我们需要在a标签上添加target=&#34;_blank&#34;，以便于实现在新窗口打开超链接。这该怎么办呢？在网上，我找了好多方法，咱们一一验证。
+实验一：直接在url后添加?_blank # 有网友给的建议是直接在url后添加?_blank。经过实验，除了原来的url地址后面会增加一个?_blank这样的识别后缀，起不到在新窗口打开超链接的目的。所以失败！
+实验二：直接在url后添加&#34; target=&#34;_blank # 由于Markdown连接语法编译为html会是&lt;a href=&#34;url&#34;&gt;&lt;/a&gt;这样的，那么在url地址后增加&#34; target=&#34;_blank，使其在编译之后看起来像&lt;a href=&#34;url&#34; target=&#34;_blank&#34;&gt;&lt;/a&gt;这样会不会有效果呢？经过测试，在bitcron平台上通过，可以用。但是在Jekyll、inkPaper等平台编译后会超链到url&#34; target=&#34;_blank这样一个奇怪的地址。所以，慎用。
+实验三：用js控制，所有超链接都在新窗口中打开 # 一不做二不休，把下面的js代码加入平台，所有的超链接都将会被赋予target=&#34;_blank&#34;权限。你点击每一个超链接都会在新窗口中打开，一劳永逸!
+&lt;script type=&#34;text/javascript&#34;&gt; $(document).ready(function() { //为超链接加上target=&#39;_blank&#39;属性 $(&#39;a[href^=&#34;http&#34;]&#39;).each(function() { $(this).attr(&#39;target&#39;, &#39;_blank&#39;); }); }); &lt;/script&gt; 实验四：使用 # 但我只想让指定的超链接在新窗口打开，又该怎么办呢？继续搜索！
+在GitHub中偶然发现，我们可以改超链的格式为[title](url){:target=&#34;_blank&#34;}，经过编译成功达到效果。
+此方法也可能在部分平台不好用，但目前尚未发现。此外，在标题中该语句并不好用，这是因为target一句在编译时并未放在a标签内，而被放在文字格式标签下了。">
+  <meta property="og:locale" content="zh_cn">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2020-02-09T08:00:00+08:00">
+    <meta property="article:modified_time" content="2020-02-09T08:00:00+08:00">
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/assets/combined.min.4d83d9d131fa58e4a3582b029a9d295c34033e4132d049b0e16fa8d1e9ddfebf.css" media="all">
+
+
+
+
+
+</head>
+
+
+
+
+
+
+
+<body class="auto">
+
+  <div class="content">
+    <header>
+      
+
+<div class="header">
+
+    
+
+    <h1 class="header-title">
+        <a href="http://localhost:1313/">穷.me</a>
+    </h1>
+
+    <div class="flex">
+        
+
+        
+        
+      
+        <p class="small ">
+            <a href="/" >
+                /🏠首页
+            </a>
+        </p>
+        
+      
+        <p class="small ">
+            <a href="/posts" >
+                /📑文章
+            </a>
+        </p>
+        
+      
+        <p class="small ">
+            <a href="/about" >
+                /😀关于
+            </a>
+        </p>
+        
+      
+        <p class="small ">
+            <a href="/friend" >
+                /朋友
+            </a>
+        </p>
+        
+        
+    </div>
+
+    
+
+</div>
+
+    </header>
+
+    <main class="main">
+      
+
+
+
+
+
+<div class="breadcrumbs">
+    
+    <a href="/">Home</a>
+    <span class="breadcrumbs-separator"> / </span>
+    
+    <a href="/posts/">Posts</a>
+    <span class="breadcrumbs-separator"> / </span>
+    
+    <a href="/posts/2020-02-09-target-blank/">如何让Markdown在新窗口打开超链接</a>
+</div>
+
+
+
+<div >
+
+  <div class="single-intro-container">
+
+    
+
+    <h1 class="single-title">如何让Markdown在新窗口打开超链接</h1>
+    
+
+    
+
+    <p class="single-readtime">
+      
+      
+      
+      <time datetime="2020-02-09T08:00:00&#43;08:00">2020-02-09</time>
+      
+
+      
+    </p>
+
+  </div>
+
+  
+
+  
+
+  
+
+  
+
+  <div class="single-content">
+    <p>markdown链接语法<code>[title](url)</code>，编译为html，形如<code>&lt;a href=&quot;url&quot;&gt;&lt;/a&gt;</code>。但很多时候，我们需要在a标签上添加<code>target=&quot;_blank&quot;</code>，以便于实现在新窗口打开超链接。这该怎么办呢？在网上，我找了好多方法，咱们一一验证。</p>
+<h3 class="heading" id="实验一直接在url后添加_blank">
+  实验一：直接在url后添加?_blank
+  <a class="anchor" href="#%e5%ae%9e%e9%aa%8c%e4%b8%80%e7%9b%b4%e6%8e%a5%e5%9c%a8url%e5%90%8e%e6%b7%bb%e5%8a%a0_blank">#</a>
+</h3>
+<p>有网友给的建议是直接在url后添加<code>?_blank</code>。经过实验，除了原来的url地址后面会增加一个<code>?_blank</code>这样的识别后缀，起不到在新窗口打开超链接的目的。所以失败！</p>
+<h3 class="heading" id="实验二直接在url后添加-target_blank">
+  实验二：直接在url后添加&quot; target=&quot;_blank
+  <a class="anchor" href="#%e5%ae%9e%e9%aa%8c%e4%ba%8c%e7%9b%b4%e6%8e%a5%e5%9c%a8url%e5%90%8e%e6%b7%bb%e5%8a%a0-target_blank">#</a>
+</h3>
+<p>由于Markdown连接语法编译为html会是<code>&lt;a href=&quot;url&quot;&gt;&lt;/a&gt;</code>这样的，那么在url地址后增加<code>&quot; target=&quot;_blank</code>，使其在编译之后看起来像<code>&lt;a href=&quot;url&quot; target=&quot;_blank&quot;&gt;&lt;/a&gt;</code>这样会不会有效果呢？经过测试，在bitcron平台上通过，可以用。但是在Jekyll、inkPaper等平台编译后会超链到<code>url&quot; target=&quot;_blank</code>这样一个奇怪的地址。所以，慎用。</p>
+<h3 class="heading" id="实验三用js控制所有超链接都在新窗口中打开">
+  实验三：用js控制，所有超链接都在新窗口中打开
+  <a class="anchor" href="#%e5%ae%9e%e9%aa%8c%e4%b8%89%e7%94%a8js%e6%8e%a7%e5%88%b6%e6%89%80%e6%9c%89%e8%b6%85%e9%93%be%e6%8e%a5%e9%83%bd%e5%9c%a8%e6%96%b0%e7%aa%97%e5%8f%a3%e4%b8%ad%e6%89%93%e5%bc%80">#</a>
+</h3>
+<p>一不做二不休，把下面的js代码加入平台，所有的超链接都将会被赋予<code>target=&quot;_blank&quot;</code>权限。你点击每一个超链接都会在新窗口中打开，一劳永逸!</p>
+<pre><code>&lt;script type=&quot;text/javascript&quot;&gt;
+	$(document).ready(function() {
+	    //为超链接加上target='_blank'属性
+		$('a[href^=&quot;http&quot;]').each(function() {
+			$(this).attr('target', '_blank');
+		});
+	});
+&lt;/script&gt;
+</code></pre>
+<h3 class="heading" id="实验四使用">
+  实验四：使用
+  <a class="anchor" href="#%e5%ae%9e%e9%aa%8c%e5%9b%9b%e4%bd%bf%e7%94%a8">#</a>
+</h3>
+<p>但我只想让指定的超链接在新窗口打开，又该怎么办呢？继续搜索！</p>
+<p>在GitHub中偶然发现，我们可以改超链的格式为<code>[title](url){:target=&quot;_blank&quot;}</code>，经过编译成功达到效果。</p>
+<p>此方法也可能在部分平台不好用，但目前尚未发现。此外，在标题中该语句并不好用，这是因为target一句在编译时并未放在a标签内，而被放在文字格式标签下了。</p>
+
+    
+  </div>
+
+  
+
+  
+
+  
+  
+
+<div class="single-pagination">
+    <hr />
+
+    <div class="flex">
+
+        <div class="single-pagination-prev">
+            
+            <div class="single-pagination-container-prev">
+                <div class="single-pagination-text">←</div>
+                <div class="single-pagination-text">
+                    <a href="/posts/2020-02-04-outlook-domian-mailbox/">
+                        使用Outlook搭建域名邮箱
+                    </a>
+                </div>
+            </div>
+            
+        </div>
+
+        <div class="single-pagination-next">
+            
+            <div class="single-pagination-container-next">
+                <div class="single-pagination-text">
+                    <a href="/posts/2020-03-21-chaos/">
+                        亂
+                    </a>
+                </div>
+                <div class="single-pagination-text">→</div>
+            </div>
+            
+        </div>
+
+    </div>
+
+    <hr />
+</div>
+
+
+
+  
+
+  
+
+  
+  <div class="back-to-top">
+    <a href="#top">
+      back to top
+    </a>
+  </div>
+  
+
+</div>
+
+
+    </main>
+  </div>
+
+  <footer>
+    
+
+    
+    
+    
+    <p>Custom</p>
+    
+
+
+  </footer>
+
+  
+
+</body>
+
+<script src="/js/theme-switch.js"></script>
+<script defer src="/js/copy-code.js"></script>
+</html>

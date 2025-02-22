@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="zh-cn"
+  dir="ltr">
+
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+
+
+
+<link rel="icon" type="image/ico" href="http://localhost:1313//favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313//favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313//favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="192x192" href="http://localhost:1313//android-chrome-192x192.png">
+<link rel="apple-touch-icon" sizes="180x180" href="http://localhost:1313//apple-touch-icon.png">
+
+<meta name="description" content=""/>
+
+
+
+<title>
+    
+    Microsoft Authenticator | 穷.me
+    
+</title>
+
+<link rel="canonical" href="http://localhost:1313/posts/2021-08-26-microsoft-authenticator/"/>
+
+<meta property="og:url" content="http://localhost:1313/posts/2021-08-26-microsoft-authenticator/">
+  <meta property="og:site_name" content="穷.me">
+  <meta property="og:title" content="Microsoft Authenticator">
+  <meta property="og:description" content="因为手机用的是iOS系统，电脑又是Windows系统，这之间就涉及到一个常用且实用的问题——密码同步。
+早期的时候我用LastPass的作为移动端与PC端的密码同步工具，后来LastPass在国内被告了商标侵权而下架，那时候我刚好换手机，于是乎LastPass就和我Say Goodbye了。
+后来又遇到了开源的Bitwarden，可以无缝导入LastPass的数据，就这样我用了Bitwarden的一直到现在。但是每次Windows和iOS之前靠这样一个桥梁来回同步，还是有些让人不爽，可不可以再精简一下呢，就是Windows直接和iOS密码同步呢？答案是有的，就是微软自家出的’Microsoft Authenticator’。
+Microsoft Authenticator之前仅仅是一个好用的二次验证工具，每次在登录微软账号的时候，只需要在手机上点一下（不用扫一下），不用输入密码就能完成登录了。但是，对我来说，Microsoft Authenticator太鸡肋了。所以没太关注。
+不过去年开始，Microsoft Authenticator可以在APP的设置中打开密码管理器功能，然后，Microsoft Authenticator就会帮你同步保存自 Edge 浏览器中的密码（需要登录同一个微软账号）。之后就像其它密码管理器一样，需要在手机系统中选择’Microsoft Authenticator’作为默认的密码管理器，这样就能实现密码的同步自动填入了。
+Microsoft Authenticator不仅有iOS版APP，也有安卓版的，但是据说必须要有谷歌框架才能正常工作。额。。。看来事情总是不会太完美。另外，在使用过程中也发现Microsoft Authenticator存在的一些问题，比如：不支持在手机上添加新密码；第一次同步密码的速度简直让人抓狂……">
+  <meta property="og:locale" content="zh_cn">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2021-08-26T15:01:00+08:00">
+    <meta property="article:modified_time" content="2021-08-26T15:01:00+08:00">
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/assets/combined.min.4d83d9d131fa58e4a3582b029a9d295c34033e4132d049b0e16fa8d1e9ddfebf.css" media="all">
+
+
+
+
+
+</head>
+
+
+
+
+
+
+
+<body class="auto">
+
+  <div class="content">
+    <header>
+      
+
+<div class="header">
+
+    
+
+    <h1 class="header-title">
+        <a href="http://localhost:1313/">穷.me</a>
+    </h1>
+
+    <div class="flex">
+        
+
+        
+        
+      
+        <p class="small ">
+            <a href="/" >
+                /🏠首页
+            </a>
+        </p>
+        
+      
+        <p class="small ">
+            <a href="/posts" >
+                /📑文章
+            </a>
+        </p>
+        
+      
+        <p class="small ">
+            <a href="/about" >
+                /😀关于
+            </a>
+        </p>
+        
+      
+        <p class="small ">
+            <a href="/friend" >
+                /朋友
+            </a>
+        </p>
+        
+        
+    </div>
+
+    
+
+</div>
+
+    </header>
+
+    <main class="main">
+      
+
+
+
+
+
+<div class="breadcrumbs">
+    
+    <a href="/">Home</a>
+    <span class="breadcrumbs-separator"> / </span>
+    
+    <a href="/posts/">Posts</a>
+    <span class="breadcrumbs-separator"> / </span>
+    
+    <a href="/posts/2021-08-26-microsoft-authenticator/">Microsoft Authenticator</a>
+</div>
+
+
+
+<div >
+
+  <div class="single-intro-container">
+
+    
+
+    <h1 class="single-title">Microsoft Authenticator</h1>
+    
+
+    
+
+    <p class="single-readtime">
+      
+      
+      
+      <time datetime="2021-08-26T15:01:00&#43;08:00">2021-08-26</time>
+      
+
+      
+    </p>
+
+  </div>
+
+  
+
+  
+
+  
+
+  
+
+  <div class="single-content">
+    <p>因为手机用的是iOS系统，电脑又是Windows系统，这之间就涉及到一个常用且实用的问题——密码同步。</p>
+<p>早期的时候我用<code>LastPass</code>的作为移动端与PC端的密码同步工具，后来<code>LastPass</code>在国内被告了商标侵权而下架，那时候我刚好换手机，于是乎<code>LastPass</code>就和我Say Goodbye了。</p>
+<p>后来又遇到了开源的<code>Bitwarden</code>，可以无缝导入<code>LastPass</code>的数据，就这样我用了<code>Bitwarden的</code>一直到现在。但是每次Windows和iOS之前靠这样一个桥梁来回同步，还是有些让人不爽，可不可以再精简一下呢，就是Windows直接和iOS密码同步呢？答案是有的，就是微软自家出的&rsquo;Microsoft Authenticator&rsquo;。</p>
+<p><code>Microsoft Authenticator</code>之前仅仅是一个好用的二次验证工具，每次在登录微软账号的时候，只需要在手机上点一下（不用扫一下），不用输入密码就能完成登录了。但是，对我来说，<code>Microsoft Authenticator</code>太鸡肋了。所以没太关注。</p>
+<p>不过去年开始，<code>Microsoft Authenticator</code>可以在APP的设置中打开密码管理器功能，然后，<code>Microsoft Authenticator</code>就会帮你同步保存自 Edge 浏览器中的密码（需要登录同一个微软账号）。之后就像其它密码管理器一样，需要在手机系统中选择&rsquo;Microsoft Authenticator&rsquo;作为默认的密码管理器，这样就能实现密码的同步自动填入了。</p>
+<p><code>Microsoft Authenticator</code>不仅有iOS版APP，也有安卓版的，但是据说必须要有谷歌框架才能正常工作。额。。。看来事情总是不会太完美。另外，在使用过程中也发现<code>Microsoft Authenticator</code>存在的一些问题，比如：不支持在手机上添加新密码；第一次同步密码的速度简直让人抓狂……</p>
+
+    
+  </div>
+
+  
+
+  
+
+  
+  
+
+<div class="single-pagination">
+    <hr />
+
+    <div class="flex">
+
+        <div class="single-pagination-prev">
+            
+            <div class="single-pagination-container-prev">
+                <div class="single-pagination-text">←</div>
+                <div class="single-pagination-text">
+                    <a href="/posts/2021-05-28-the-second-half-of-life/">
+                        To Colin，人生的下半场
+                    </a>
+                </div>
+            </div>
+            
+        </div>
+
+        <div class="single-pagination-next">
+            
+            <div class="single-pagination-container-next">
+                <div class="single-pagination-text">
+                    <a href="/posts/2021-09-09-alpaca/">
+                        遇见恶心人，我的心情
+                    </a>
+                </div>
+                <div class="single-pagination-text">→</div>
+            </div>
+            
+        </div>
+
+    </div>
+
+    <hr />
+</div>
+
+
+
+  
+
+  
+
+  
+  <div class="back-to-top">
+    <a href="#top">
+      back to top
+    </a>
+  </div>
+  
+
+</div>
+
+
+    </main>
+  </div>
+
+  <footer>
+    
+
+    
+    
+    
+    <p>Custom</p>
+    
+
+
+  </footer>
+
+  
+
+</body>
+
+<script src="/js/theme-switch.js"></script>
+<script defer src="/js/copy-code.js"></script>
+</html>
